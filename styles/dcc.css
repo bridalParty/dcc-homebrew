@@ -1675,6 +1675,7 @@ form.dcc-roll-modifier input.stat {
   font-size: 12px;
   grid-row: 2;
   margin: 3px;
+  resize: none;
   text-align: left;
 }
 .dcc.sheet.actor .character2 .lucky-roll-box {
