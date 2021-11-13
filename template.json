@@ -73,6 +73,14 @@
             "value": 30,
             "base": 30,
             "special": ""
+          },
+          "melee": {
+            "attack": "+@str+@ab",
+            "damage": "+@str+@ab"
+          },
+          "missile": {
+            "attack": "+@agi+@ab",
+            "damage": "+@ab"
           }
         },
         "details": {

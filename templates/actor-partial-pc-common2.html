@@ -151,12 +151,12 @@
 
     {{!-- Melee Attack Values --}}
     <div style="grid-area: 2 / 3" class="hit-bonus-box">
-      <label for="melee-attack-value" class="dark-title">Melee<br/>Attack</label>
-      <input id="melee-attack-value" value="+2">
+      <label for="data.attributes.melee.attack" class="dark-title">{{{localize "DCC.MeleeAttack"}}}</label>
+      <input id="data.attributes.melee.attack" name="data.attributes.melee.attack" value="{{data.attributes.melee.attack}}">
     </div>
     <div style="grid-area: 2 / 4" class="hit-bonus-box">
-      <label for="melee-damage-value" class="dark-title">Melee<br/>Damage</label>
-      <input id="melee-damage-value" value="1d6+2">
+      <label for="data.attributes.melee.damage" class="dark-title">{{{localize "DCC.MeleeDamage"}}}</label>
+      <input id="data.attributes.melee.damage" name="data.attributes.melee.damage" value="{{data.attributes.melee.damage}}">
     </div>
 
     <div style="grid-row: 3; grid-column-start: 1; grid-column-end: 5;" class="row-separator"></div>
@@ -169,12 +169,12 @@
 
     {{!-- Ranged Attack Values --}}
     <div style="grid-area: 4 / 3" class="hit-bonus-box">
-      <label for="ranged-attack-value" class="dark-title">Ranged<br/>Attack</label>
-      <input id="ranged-attack-value" value="+2">
+      <label for="data.attributes.missile.attack" class="dark-title">{{{localize "DCC.MissileAttack"}}}</label>
+      <input id="data.attributes.missile.attack" name="data.attributes.missile.attack"value="{{data.attributes.missile.attack}}">
     </div>
     <div style="grid-area: 4 / 4" class="hit-bonus-box">
-      <label for="ranged-damage-value" class="dark-title">Ranged<br/>Damage</label>
-      <input id="ranged-damage-value" value="1d6+2">
+      <label for="data.attributes.missile.damage" class="dark-title">{{{localize "DCC.MissileDamage"}}}</label>
+      <input id="data.attributes.missile.damage" name="data.attributes.missile.damage" value="{{data.attributes.missile.damage}}">
     </div>
 
     <div style="grid-row: 5; grid-column-start: 1; grid-column-end: 5" class="row-separator"></div>
