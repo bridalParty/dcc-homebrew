@@ -13,8 +13,8 @@ class DCCActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ['dcc', 'sheet', 'actor'],
       template: 'systems/dcc/templates/actor-sheet-zero-level.html',
-      width: 600,
-      height: 600,
+      width: 611,
+      height: 785,
       tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
       dragDrop: [{ dragSelector: null, dropSelector: null }],
       scrollY: [

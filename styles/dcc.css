@@ -1555,7 +1555,7 @@ form.dcc-roll-modifier input.stat {
   display: grid;
   font-family: var(--label-font);
   font-size: 16px;
-  grid-template-columns: 231px 146px 108px 108px;
+  grid-template-columns: minmax(201px, auto) minmax(146px, auto) minmax(108px, auto) minmax(108px, auto);
   grid-template-rows: 125px 70px 9px 70px 9px 70px 9px 70px 9px 70px 9px 70px;
   text-align: center;
 }
@@ -1582,7 +1582,7 @@ form.dcc-roll-modifier input.stat {
   align-items: center;
   display: grid;
   font-size: 14px;
-  grid-template-columns: 125px 37px 70px;
+  grid-template-columns: minmax(95px, auto) 37px 70px;
   grid-template-rows: 20px 25px 25px;
   text-align: left;
 }
@@ -1606,7 +1606,7 @@ form.dcc-roll-modifier input.stat {
 }
 .dcc.sheet.actor .character2 .ac-and-hp-box {
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: minmax(100px, auto) minmax(100px, auto);
   grid-template-rows: 65px 20px 20px;
   margin: 7px 0 0 15px;
 }
@@ -1622,7 +1622,7 @@ form.dcc-roll-modifier input.stat {
   column-gap: 8px;
   display: grid;
   font-size: 14px;
-  grid-template-columns: 102px 80px 100px 68px;
+  grid-template-columns: minmax(102px, auto) minmax(80px, auto) minmax(100px, auto) minmax(68px, auto);
   grid-template-rows: 24px 20px 20px 20px 20px;
   margin-bottom: 12px;
 }
@@ -1644,7 +1644,7 @@ form.dcc-roll-modifier input.stat {
   border: var(--dark-border);
   border-top: none;
   display: grid;
-  grid-template-columns: 100px;
+  grid-template-columns: minmax(100px, auto);
   grid-template-rows: 32px 29px;
   font-size: 12px;
 }
@@ -1691,8 +1691,12 @@ form.dcc-roll-modifier input.stat {
   grid-template-rows: 18px auto;
   font-size: 14px;
 }
-.dcc.sheet.actor .character2 .portrait img {
+.dcc.sheet.actor .character2 .portrait img.portrait {
   border: none;
+  display: block;
+  margin-top: 6px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .dcc.sheet.actor .character2 .row-separator {
   border-bottom: 2px dotted var(--medium-color);
