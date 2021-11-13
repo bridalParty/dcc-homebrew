@@ -1550,33 +1550,8 @@ form.dcc-roll-modifier input.stat {
 /*  New Sheet Styles                         */
 /* ----------------------------------------- */
 .dcc.sheet.actor .character2 .outer {
-  background: url("images/parchment.jpeg");
-  column-gap: 12px;
-  display: grid;
-  font-family: var(--label-font);
-  font-size: 16px;
   grid-template-columns: minmax(201px, auto) minmax(146px, auto) minmax(108px, auto) minmax(108px, auto);
   grid-template-rows: 125px 70px 9px 70px 9px 70px 9px 70px 9px 70px 9px 70px;
-  text-align: center;
-}
-.dcc.sheet.actor .character2 .outer input,
-.dcc.sheet.actor .character2 .outer select {
-  background: none;
-  border-width: 0 0 1px 0;
-  font-family: var(--data-font);
-  text-align: center;
-  text-align-last: center;
-}
-.dcc.sheet.actor .character2 .dark-title {
-  align-self: stretch;
-  background: var(--dark-bg);
-  color: var(--light-color);
-  grid-column-start: 1;
-  grid-row: 1;
-  letter-spacing: 1px;
-  margin-left: -1px;
-  padding-top: 1px;
-  text-align: center;
 }
 .dcc.sheet.actor .character2 .ability-box {
   align-items: center;
@@ -1587,7 +1562,7 @@ form.dcc-roll-modifier input.stat {
   text-align: left;
 }
 .dcc.sheet.actor .character2 .ability-box input {
-  border-width: 0 0 1px 0;
+  border-width: 0 0 1px;
   font-size: 14px;
 }
 .dcc.sheet.actor .character2 .ability-name {
@@ -1601,7 +1576,7 @@ form.dcc-roll-modifier input.stat {
 }
 .dcc.sheet.actor .character2 .ability-score-box input {
   align-self: center;
-  border: none;
+  border: 0;
   font-size: 30px;
 }
 .dcc.sheet.actor .character2 .ac-and-hp-box {
@@ -1611,14 +1586,14 @@ form.dcc-roll-modifier input.stat {
   margin: 7px 0 0 15px;
 }
 .dcc.sheet.actor .character2 .ac-and-hp-box input {
-  border: none;
+  border: 0;
   font-size: 24px;
   grid-column: 3;
 }
 .dcc.sheet.actor .character2 .combat-basics {
   align-items: center;
   border: var(--dark-border);
-  border-top: none;
+  border-top: 0;
   column-gap: 8px;
   display: grid;
   font-size: 14px;
@@ -1642,35 +1617,35 @@ form.dcc-roll-modifier input.stat {
 .dcc.sheet.actor .character2 .hit-bonus-box {
   align-items: center;
   border: var(--dark-border);
-  border-top: none;
+  border-top: 0;
   display: grid;
+  font-size: 12px;
   grid-template-columns: minmax(100px, auto);
   grid-template-rows: 32px 29px;
-  font-size: 12px;
 }
 .dcc.sheet.actor .character2 .hit-bonus-box input {
-  border: none;
+  border: 0;
   font-size: 18px;
   grid-row: 2;
   margin-top: 4px;
 }
 .dcc.sheet.actor .character2 .languages-box {
   border: var(--dark-border);
-  border-top: none;
+  border-top: 0;
   display: grid;
-  grid-template-rows: 17px 50px;
   font-size: 12px;
+  grid-template-rows: 17px 50px;
   text-align: left;
 }
 .dcc.sheet.actor .character2 .languages-box label,
 .dcc.sheet.actor .character2 .lucky-roll-box label {
-  text-align: left;
   padding-left: 3px;
+  text-align: left;
 }
 .dcc.sheet.actor .character2 .languages-box textarea,
 .dcc.sheet.actor .character2 .lucky-roll-box textarea {
   background: none;
-  border: none;
+  border: 0;
   font-family: var(--data-font);
   font-size: 12px;
   grid-row: 2;
@@ -1680,27 +1655,23 @@ form.dcc-roll-modifier input.stat {
 }
 .dcc.sheet.actor .character2 .lucky-roll-box {
   border: var(--dark-border);
-  border-top: none;
+  border-top: 0;
   display: grid;
-  grid-template-rows: 17px 50px;
   font-size: 12px;
+  grid-template-rows: 17px 50px;
 }
 .dcc.sheet.actor .character2 .portrait {
   border: 2px solid black;
   display: grid;
-  grid-template-rows: 18px auto;
   font-size: 14px;
+  grid-template-rows: 18px auto;
 }
 .dcc.sheet.actor .character2 .portrait img.portrait {
-  border: none;
+  border: 0;
   display: block;
-  margin-top: 6px;
   margin-left: auto;
   margin-right: auto;
-}
-.dcc.sheet.actor .character2 .row-separator {
-  border-bottom: 2px dotted var(--medium-color);
-  margin-bottom: 3px;
+  margin-top: 6px;
 }
 .dcc.sheet.actor .character2 .saving-throw-box {
   align-items: center;
@@ -1713,7 +1684,7 @@ form.dcc-roll-modifier input.stat {
 }
 .dcc.sheet.actor .character2 .saving-throw-box input {
   align-self: center;
-  background: #DBD9CD;
+  background: #dbd9cd;
   border-radius: 100px;
   font-size: 18px;
   grid-column: 1;
@@ -1725,6 +1696,37 @@ form.dcc-roll-modifier input.stat {
   font-size: 15px;
   grid-column: 2;
   letter-spacing: 1px;
+}
+.dcc.sheet.actor .outer {
+  background: url("images/parchment.jpeg");
+  column-gap: 12px;
+  display: grid;
+  font-family: var(--label-font);
+  font-size: 16px;
+  text-align: center;
+}
+.dcc.sheet.actor .outer input,
+.dcc.sheet.actor .outer select {
+  background: none;
+  border-width: 0 0 1px;
+  font-family: var(--data-font);
+  text-align: center;
+  text-align-last: center;
+}
+.dcc.sheet.actor .dark-title {
+  align-self: stretch;
+  background: var(--dark-bg);
+  color: var(--light-color);
+  grid-column-start: 1;
+  grid-row: 1;
+  letter-spacing: 1px;
+  margin-left: -1px;
+  padding-top: 1px;
+  text-align: center;
+}
+.dcc.sheet.actor .row-separator {
+  border-bottom: 2px dotted var(--medium-color);
+  margin-bottom: 3px;
 }
 
 /*# sourceMappingURL=dcc.css.map */
