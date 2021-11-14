@@ -37,14 +37,14 @@
       <div class="combat-basics-title dark-title" style="grid-row: 1; grid-column-start: 1; grid-column-end: 5">Combat Basics</div>
 
       {{!-- Initiative --}}
-      <label for="data.attributes.init.die" style="grid-area: 2 / 1">{{localize "DCC.InitiativeDie"}}:</label>
+      <label for="data.attributes.init.die" style="grid-area: 2 / 1" class="init-label rollable">{{localize "DCC.InitiativeDie"}}:</label>
       <select name="data.attributes.init.die" id="data.attributes.init.die" style="grid-area: 2 / 2">
         {{#select data.attributes.init.die}}
         <option value="1d20">1d20</option>
         <option value="1d16">1d16</option>
         {{/select}}
       </select>
-      <label for="data.attributes.init.value" style="grid-area: 2 / 3">{{localize "DCC.Initiative"}}:</label>
+      <label for="data.attributes.init.value" style="grid-area: 2 / 3" class="init-label rollable">{{localize "DCC.Initiative"}}:</label>
       <input id="data.attributes.init.value" name="data.attributes.init.value" style="grid-area: 2 / 4"
              value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" size="3"
              placeholder="+0" data-dtype="Number"/>
@@ -67,7 +67,7 @@
              data-dtype="String"/>
 
       {{!-- Hit Die --}}
-      <label for="data.attributes.hitDice.value" style="grid-area: 5 / 1">{{localize "DCC.HitDice"}}:</label>
+      <label for="data.attributes.hitDice.value" style="grid-area: 5 / 1" class="hd-label rollable">{{localize "DCC.HitDice"}}:</label>
       <input id="data.attributes.hitDice.value" name="data.attributes.hitDice.value"
              style="grid-area: 5 / 2" size="3"
              value="{{data.attributes.hitDice.value}}"
@@ -117,14 +117,16 @@
 
     {{!-- Ability Scores and Saves --}}
     {{#* inline "abilityScore"}}
-    <div style="grid-area: {{area}}" class="ability-box">
-      <label for="data.abilities.{{id}}.value" class="ability-name dark-title">{{localize ability.label}}</label>
+    <div style="grid-area: {{area}}" class="ability-box" data-ability="{{id}}">
+      <label for="data.abilities.{{id}}.value" class="ability-name dark-title rollable">{{localize ability.label}}</label>
       <div class="ability-score-box">
         <input id="data.abilities.{{id}}.value" value="{{ability.value}}" size="2"
                name="data.abilities.{{id}}.value" data-dtype="Number" placeholder="10"/>
       </div>
-      <label for="data.abilities.{{id}}.mod" style="grid-area: 2 / 1">{{localize "DCC.Modifier"}}:</label>
+      <label for="data.abilities.{{id}}.mod" style="grid-area: 2 / 1"
+             class="ability-modifier{{#if rollUnder}} rollable{{/if}}">{{localize "DCC.Modifier"}}:</label>
       <input id="data.abilities.{{id}}.mod" style="grid-area: 2 / 2"
+             class="ability-modifier{{#if rollUnder}} rollable{{/if}}"
              name="data.abilities.{{id}}.mod" value="{{numberFormat ability.mod decimals=0 sign=true}}"
              size="3" disabled/>
       <label for="data.abilities.{{id}}.max" style="grid-area: 3 / 1">{{localize "DCC.MaxValue"}}:</label>
@@ -134,10 +136,10 @@
     </div>
     {{/inline}}
     {{#* inline "save"}}
-    <div style="grid-area: {{area}}" class="saving-throw-box">
+    <div style="grid-area: {{area}}" class="saving-throw-box" data-save="{{id}}">
       <input id="data.saves.{{id}}.value" value="{{numberFormat save.value decimals=0 sign=true}}"
              name="data.saves.{{id}}.value" data-dtype="Number" placeholder="0"/>
-      <label for="data.saves.{{id}}.value">{{localize save.label}}</label>
+      <label for="data.saves.{{id}}.value" class="save-name rollable">{{localize save.label}}</label>
     </div>
     {{/inline}}
 
@@ -203,7 +205,7 @@
     <div style="grid-row: 9; grid-column-start: 1; grid-column-end: 3" class="row-separator"></div>
 
     {{!-- Luck --}}
-    {{> abilityScore id='lck' ability=data.abilities.lck area='10 / 1'}}
+    {{> abilityScore id='lck' ability=data.abilities.lck area='10 / 1' rollUnder=true}}
 
     {{!-- Lucky Roll --}}
     <div style="grid-row: 10; grid-column: 2" class="lucky-roll-box">

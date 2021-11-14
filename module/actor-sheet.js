@@ -250,10 +250,12 @@ class DCCActorSheet extends ActorSheet {
     if (this.actor.isOwner) {
       // Ability Checks
       html.find('.ability-name').click(this._onRollAbilityCheck.bind(this))
-      html.find('.ability-modifiers').click(this._onRollAbilityCheck.bind(this))
-      html.find('li.ability').each(makeDraggable)
-      html.find('div.ability-modifiers').each((index, element) => {
-        // Also make the luck modifier draggable for non-standard luck checks
+      html.find('.ability-modifier').click(this._onRollAbilityCheck.bind(this))
+      html.find('li.ability').each(makeDraggable) // Old zero sheet
+      html.find('label.ability-name').each(makeDraggable)
+      // For old sheet
+      html.find('.ability-modifier').each((index, element) => {
+        // Also make the luck modifier draggable for luck checks against a DC
         if (element.parentElement.dataset.ability === 'lck') {
           makeDraggable(index, element)
         }
@@ -261,15 +263,18 @@ class DCCActorSheet extends ActorSheet {
 
       // Initiative
       html.find('.init-label').click(this._onRollInitiative.bind(this))
-      html.find('div.init').each(makeDraggable)
+      html.find('.init-label').each(makeDraggable)
+      html.find('div.init').each(makeDraggable) // Old zero/NPC sheet
 
       // Hit Dice
       html.find('.hd-label').click(this._onRollHitDice.bind(this))
-      html.find('div.hd').each(makeDraggable)
+      html.find('.hd-label').each(makeDraggable)
+      html.find('div.hd').each(makeDraggable) // Old zero/NPC sheet
 
       // Saving Throws
       html.find('.save-name').click(this._onRollSavingThrow.bind(this))
-      html.find('li.save').each(makeDraggable)
+      html.find('.save-name').each(makeDraggable)
+      html.find('li.save').each(makeDraggable) // Old zero/NPC sheet
 
       // Skills
       html.find('.skill-check.rollable').click(this._onRollSkillCheck.bind(this))
@@ -404,7 +409,7 @@ class DCCActorSheet extends ActorSheet {
 
     // Handle the various draggable elements on the sheet
     const classes = event.target.classList
-    if (classes.contains('ability')) {
+    if (classes.contains('ability-name')) {
       // Normal ability rolls and DCC d20 roll under luck rolls
       const abilityId = this._findDataset(event.currentTarget, 'ability')
       const rollUnder = (abilityId === 'lck')
@@ -416,7 +421,19 @@ class DCCActorSheet extends ActorSheet {
           rollUnder: rollUnder
         }
       }
-    } else if (classes.contains('ability-modifiers')) {
+    } else if (classes.contains('ability')) { // Old zero sheet
+      // Normal ability rolls and DCC d20 roll under luck rolls
+      const abilityId = this._findDataset(event.currentTarget, 'ability')
+      const rollUnder = (abilityId === 'lck')
+      dragData = {
+        type: 'Ability',
+        actorId: this.actor.id,
+        data: {
+          abilityId: abilityId,
+          rollUnder: rollUnder
+        }
+      }
+    } else if (classes.contains('ability-modifier')) {
       // Force d20 + Mod roll over (for non-standard luck rolls) by dragging the modifier
       const abilityId = this._findDataset(event.currentTarget, 'ability')
       if (abilityId) {
@@ -429,13 +446,19 @@ class DCCActorSheet extends ActorSheet {
           }
         }
       }
-    } else if (classes.contains('init')) {
+    } else if (classes.contains('init-label')) {
       dragData = {
         type: 'Initiative',
         actorId: this.actor.id,
         data: {}
       }
-    } else if (classes.contains('hd')) {
+    } else if (classes.contains('init')) { // Old zero sheet
+      dragData = {
+        type: 'Initiative',
+        actorId: this.actor.id,
+        data: {}
+      }
+    } else if (classes.contains('hd-label')) {
       dragData = {
         type: 'Hit Dice',
         actorId: this.actor.id,
@@ -443,7 +466,21 @@ class DCCActorSheet extends ActorSheet {
           dice: this.actor.data.data.attributes.hitDice.value
         }
       }
-    } else if (classes.contains('save')) {
+    } else if (classes.contains('hd')) { // Old zero/NPC sheet
+      dragData = {
+        type: 'Hit Dice',
+        actorId: this.actor.id,
+        data: {
+          dice: this.actor.data.data.attributes.hitDice.value
+        }
+      }
+    } else if (classes.contains('save-name')) {
+      dragData = {
+        type: 'Save',
+        actorId: this.actor.id,
+        data: this._findDataset(event.currentTarget, 'save')
+      }
+    } else if (classes.contains('save')) { // Old zero/NPC sheet
       dragData = {
         type: 'Save',
         actorId: this.actor.id,
@@ -578,13 +615,9 @@ class DCCActorSheet extends ActorSheet {
     const ability = event.currentTarget.parentElement.dataset.ability
 
     // Luck checks are roll under unless the user explicitly clicks the modifier
-    const rollUnder = (ability === 'lck') && (event.currentTarget.className !== 'ability-modifiers')
-
-    // Allow alternate behaviour if the modifier is clicked instead of the attribute
-    const modClick = (event.currentTarget.className === 'ability-modifiers')
+    const rollUnder = (ability === 'lck') && (!event.currentTarget.classList.contains('ability-modifier'))
 
     Object.assign(options, {
-      modClick,
       rollUnder
     })
 

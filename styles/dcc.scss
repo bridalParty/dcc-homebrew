@@ -276,7 +276,7 @@ $duvall: 'DuvallSmallCaps', 'Palatino Linotype', serif;
   width: 36px;
 }
 
-.dcc.sheet.actor .ability-scores .ability .ability-modifiers {
+.dcc.sheet.actor .ability-scores .ability .ability-modifier {
   border-left: $border-style;
   border-top: $border-style;
   flex: 0 0 24px;
@@ -879,7 +879,7 @@ $duvall: 'DuvallSmallCaps', 'Palatino Linotype', serif;
   width: 36px;
 }
 
-.dcc.sheet.actor .character-grid .ability .ability-modifiers {
+.dcc.sheet.actor .character-grid .ability .ability-modifier {
   border-left: $border-style;
   border-top: $border-style;
   font-size: 16px;
