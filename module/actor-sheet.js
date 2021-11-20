@@ -14,7 +14,7 @@ class DCCActorSheet extends ActorSheet {
       classes: ['dcc', 'sheet', 'actor'],
       template: 'systems/dcc/templates/actor-sheet-zero-level.html',
       width: 611,
-      height: 785,
+      height: null, // Size based on content
       tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }],
       dragDrop: [{ dragSelector: null, dropSelector: null }],
       scrollY: [
