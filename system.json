@@ -49,16 +49,14 @@
       "entity": "JournalEntry"
     }
   ],
-  "gridDistance": 5,
+  "gridDistance": 10,
   "gridUnits": "ft",
   "primaryTokenAttribute": "attributes.hp",
   "secondaryTokenAttribute": "abilities.lck.value",
   "socket": true,
   "initiative": "@attributes.init.die + @attributes.init.value",
-  "url": "https://github.com/foundryvtt-dcc/dcc",
-  "manifest": "https://github.com/foundryvtt-dcc/dcc/releases/download/v0.31.1/system.json",
-  "download": "https://github.com/foundryvtt-dcc/dcc/releases/download/v0.31.1/dcc.zip",
-  "bugs": "https://github.com/foundryvtt-dcc/dcc/issues",
-  "allowBugReporter": true,
+  "url": "https://github.com/bridalParty/dcc-homebrew/",
+  "manifest": "https://github.com/bridalParty/dcc-homebrew/releases/download/test/system.json",
+  "download": "https://github.com/bridalParty/dcc-homebrew/releases/download/test/dcc.zip",
   "license": "LICENSE.txt"
 }
